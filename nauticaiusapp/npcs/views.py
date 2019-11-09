@@ -1,4 +1,9 @@
-from django.http import HttpResponse
+from django.shortcuts import render
+from rest_framework import viewsets
+from .serializers import NpcSerializer
+from .models import Npc
 
-def index(request):
-    return HttpResponse("lol NPCs")
+class NpcView(viewsets.ModelViewSet):
+
+    serializer_class = NpcSerializer
+    queryset = Npc.objects.all()
